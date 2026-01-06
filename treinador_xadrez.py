@@ -1,3 +1,4 @@
+from shutil import move
 import chess
 import random
 
@@ -19,7 +20,7 @@ OPENING_BOOK = {
 PRINCIPLES = {
     "center": ["d4", "c4", "e4"],
     "develop": ["Nc3", "Nf3", "Be2", "Bd3"],
-    "castle": ["O-O"]
+    "castle": ["O-O", "O-O-O"]
 }
 
 # ---------------------------
@@ -33,6 +34,44 @@ EXPLANATIONS = {
     "pawn_loss": "Cuidado: perdeu um peão sem compensação.",
     "other": "Lance válido, mas pense nos princípios do Gambito da Rainha."
 }
+
+# ---------------------------
+# Máquina fazendo lances repetidos
+# ---------------------------
+engine_history = []
+
+def choose_engine_move(board, engine_history):
+    legal_moves = list(board.legal_moves)
+
+    scored_moves = []
+
+    for move in legal_moves:
+        score = 0
+
+        # Penaliza repetir o último lance
+        if engine_history:
+            last = engine_history[-1]
+            if move.from_square == last.to_square and move.to_square == last.from_square:
+                score -= 100  # punição forte
+
+        # Penaliza mover torre cedo
+        piece = board.piece_at(move.from_square)
+        if piece and piece.piece_type == chess.ROOK and board.fullmove_number < 10:
+            score -= 10
+
+        # Incentiva desenvolvimento
+        if piece and piece.piece_type in (chess.KNIGHT, chess.BISHOP):
+            score += 5
+
+        scored_moves.append((score, move))
+
+    scored_moves.sort(key=lambda x: x[0], reverse=True)
+
+    chosen = scored_moves[0][1]
+    engine_history.append(chosen)
+
+    return chosen
+
 
 # ---------------------------
 # Avaliação do lance
@@ -77,14 +116,7 @@ def engine_move(board, history, mode="trainer"):
         return moves[0]  # primeiro legal, não necessariamente ótimo
 
     # Modo Livre: heurística normal
-    best_move = None
-    best_score = -999
-    for move in board.legal_moves:
-        score, _ = evaluate_move(move.uci(), board)
-        if score > best_score:
-            best_score = score
-            best_move = move
-    return best_move
+    return choose_engine_move(board, engine_history)
 
 # ---------------------------
 # Sistema de dicas
@@ -102,15 +134,56 @@ def give_hint(board):
 # ---------------------------
 # Feedback avançado no modo livre
 # ---------------------------
-def analyze_free_move(move_uci, board):
-    san = board.san(chess.Move.from_uci(move_uci))
-    messages = []
-    if san in ["a3", "h3", "Na3", "Nh3"]:
-        messages.append("Aviso: Esta peça não participa ativamente do centro.")
-    if san.startswith("Q") and san not in ["Qd1", "Qc1"]:
-        messages.append("Aviso: Dama avançada cedo pode ser vulnerável.")
-    return messages
 
+def analyze_free_move(board: chess.Board):
+
+    # Analisa o estado atual do tabuleiro APÓS o lance do usuário e retorna alertas estratégicos simples.
+
+    alerts = []
+
+    last_move = board.peek()  # último lance já aplicado
+    #san = board.san(last_move)
+
+    # 1. Rei em xeque
+    if board.is_check():
+        alerts.append("⚠️ Atenção: o rei está em xeque.")
+
+    # 2. Peça pendurada (captura imediata possível)
+    for square, piece in board.piece_map().items():
+        if piece.color == board.turn:  # peças do lado que vai jogar
+            attackers = board.attackers(not board.turn, square)
+            defenders = board.attackers(board.turn, square)
+
+            if attackers and not defenders:
+                piece_name = chess.piece_name(piece.piece_type)
+                alerts.append(
+                    f"Sua {piece_name} em {chess.square_name(square)} está pendurada."
+                )
+
+    # 3. Desenvolvimento muito cedo da dama
+    last_move = board.peek()
+    piece = board.piece_at(last_move.to_square)
+    if piece and piece.piece_type == chess.QUEEN and board.fullmove_number <= 5:
+        alerts.append(
+            "A dama foi desenvolvida muito cedo, pode virar alvo de tempos."
+        )
+
+    # 4. Falta de controle central
+    central_squares = [chess.D4, chess.E4, chess.D5, chess.E5]
+    control = 0
+    for sq in central_squares:
+        control += len(board.attackers(not board.turn, sq))
+
+    if control == 0:
+        alerts.append(
+            "Você não exerce controle sobre o centro (d4, e4, d5, e5)."
+        )
+
+    # 5. Feedback positivo mínimo (se nada deu errado)
+    if not alerts:
+        alerts.append("Lance sólido, sem fraquezas imediatas detectadas.")
+
+    return alerts
 # ---------------------------
 # Impressão do tabuleiro com zeros
 # ---------------------------
@@ -162,18 +235,21 @@ def play(mode="trainer"):
             print("Lance inválido. Tente novamente.")
             continue
 
+        # Avaliação e feedback
+        if board.turn != chess.WHITE :
+            score, explanation = evaluate_move(move.uci(), board)
+        else:
+            score, explanation = None, None
         board.push(move)
         history.append(user_input)
-
-        # Avaliação e feedback
-        score, explanation = evaluate_move(move.uci(), board)
+    
         print(f"\nVocê jogou: {user_input}")
         print("Explicação:", explanation)
         print("Tabuleiro após seu lance:")
         print_board_with_zeros(board)
 
         if mode == "free":
-            alerts = analyze_free_move(move.uci(), board)
+            alerts = analyze_free_move(board)
             for a in alerts:
                 print(a)
 
@@ -185,9 +261,7 @@ def play(mode="trainer"):
         san_engine = board.san(engine)
         board.push(engine)
         history.append(san_engine)
-        score_engine, explanation_engine = evaluate_move(engine.uci(), board)
         print(f"\nMáquina joga: {san_engine}")
-        print("Explicação do lance da máquina:", explanation_engine)
         print("Tabuleiro após o lance da máquina:")
         print_board_with_zeros(board)
 
