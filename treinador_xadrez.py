@@ -20,7 +20,7 @@ OPENING_BOOK = {
 PRINCIPLES = {
     "center": ["d4", "c4", "e4"],
     "develop": ["Nc3", "Nf3", "Be2", "Bd3"],
-    "castle": ["O-O", "O-O-O"]
+    "castle": ["O-O"]
 }
 
 # ---------------------------
@@ -36,42 +36,102 @@ EXPLANATIONS = {
 }
 
 # ---------------------------
-# Máquina fazendo lances repetidos
+# Máquina fazendo lances
 # ---------------------------
 engine_history = []
 
 def choose_engine_move(board, engine_history):
     legal_moves = list(board.legal_moves)
-
     scored_moves = []
 
     for move in legal_moves:
         score = 0
+        piece = board.piece_at(move.from_square)
 
-        # Penaliza repetir o último lance
+        # =========================
+        # Anti-loop / anti-recuo inútil
+        # =========================
         if engine_history:
             last = engine_history[-1]
+            # Voltar exatamente o lance anterior
             if move.from_square == last.to_square and move.to_square == last.from_square:
-                score -= 100  # punição forte
+                score -= 100
 
-        # Penaliza mover torre cedo
-        piece = board.piece_at(move.from_square)
+        # =========================
+        # Penaliza mover a mesma peça cedo
+        # =========================
+        if engine_history and board.fullmove_number <= 8:
+            last = engine_history[-1]
+            if move.from_square == last.to_square:
+                score -= 4
+
+        # =========================
+        # Penaliza recuo (engine agressiva)
+        # =========================
+        if piece:
+            from_rank = chess.square_rank(move.from_square)
+            to_rank = chess.square_rank(move.to_square)
+
+            if piece.color == chess.WHITE and to_rank < from_rank:
+                score -= 8
+            if piece.color == chess.BLACK and to_rank > from_rank:
+                score -= 8
+
+        # =========================
+        # Torre cedo = crime
+        # =========================
         if piece and piece.piece_type == chess.ROOK and board.fullmove_number < 10:
-            score -= 10
+            score -= 12
 
-        # Incentiva desenvolvimento
-        if piece and piece.piece_type in (chess.KNIGHT, chess.BISHOP):
-            score += 5
+        # =========================
+        # Desenvolvimento REAL (uma vez)
+        # =========================
+        if piece:
+            if piece.piece_type == chess.KNIGHT:
+                if move.from_square in (chess.B1, chess.G1, chess.B8, chess.G8):
+                    score += 4
+
+            if piece.piece_type == chess.BISHOP:
+                if move.from_square in (chess.C1, chess.F1, chess.C8, chess.F8):
+                    score += 4
+
+        # =========================
+        # Peões centrais (prioridade máxima)
+        # =========================
+        if piece and piece.piece_type == chess.PAWN:
+            if move.to_square in (chess.D4, chess.E4, chess.D5, chess.E5):
+                score += 6
+
+            # avanço geral de peão
+            score += 2
+
+        # =========================
+        # Avanço geral de peças (pressão)
+        # =========================
+        if piece and piece.piece_type != chess.PAWN:
+            if piece.color == chess.WHITE and chess.square_rank(move.to_square) > chess.square_rank(move.from_square):
+                score += 2
+            if piece.color == chess.BLACK and chess.square_rank(move.to_square) < chess.square_rank(move.from_square):
+                score += 2
+
+        # =========================
+        # Xeques (mas sem loucura cedo)
+        # =========================
+        temp_board = board.copy()
+        temp_board.push(move)
+        if temp_board.is_check():
+            if board.fullmove_number > 10:
+                score += 6
+            else:
+                score += 3
 
         scored_moves.append((score, move))
 
     scored_moves.sort(key=lambda x: x[0], reverse=True)
-
     chosen = scored_moves[0][1]
     engine_history.append(chosen)
 
     return chosen
-
 
 # ---------------------------
 # Avaliação do lance
