@@ -72,19 +72,20 @@ Como jogar:
 - Digite 'quit' para sair
 
 Tabuleiro atual:
+
 r n b q k b n r
 
-p p p p 0 p p p
-
-0 0 0 0 p 0 0 0
+p p p p p p p p
 
 0 0 0 0 0 0 0 0
 
-0 0 P 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+0 0 0 P 0 0 0 0
 
 0 0 0 0 0 0 0 0
 
-P P 0 P P P P P
+P P P 0 P P P P
 
 R N B Q K B N R
 
