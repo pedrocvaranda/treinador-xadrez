@@ -1,5 +1,8 @@
 # Treinador de Xadrez – Gambito da Rainha
 
+> **Sobre o autor:** Desenvolvido por [Pedro Varanda](github.com/pedrocvaranda), 
+> autor de *Varandian Optics* 
+
 ## Descrição do Projeto
 
 Este projeto é um **treinador de xadrez em Python**, focado no **Gambito da Rainha**, desenvolvido para aprendizado e prática de abertura clássica de forma **interativa e didática**.
