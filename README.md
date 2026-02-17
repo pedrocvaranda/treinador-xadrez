@@ -2,7 +2,6 @@
 
 **Sobre o autor:** 
 - Published Research: Varandian Optics (DOI: 10.5281/zenodo.18529071)
-- Under peer review: Journal of the Optical Society of America A
 - #1 Brazil - OBA 2025 (Perfect Score)
 - 3× IOAA Team Selection
 
