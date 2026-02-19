@@ -1,10 +1,5 @@
 # Treinador de Xadrez – Gambito da Rainha
 
-**Sobre o autor:** 
-- Published Research: Varandian Optics (DOI: 10.5281/zenodo.18529071)
-- #1 Brazil - OBA 2025 (Perfect Score)
-- 3× IOAA Team Selection
-
 ## Descrição do Projeto
 
 Este projeto é um **treinador de xadrez em Python**, focado no **Gambito da Rainha**, desenvolvido para aprendizado e prática de abertura clássica de forma **interativa e didática**.
@@ -112,6 +107,21 @@ Tabuleiro após seu lance:
 - Recomendado para iniciantes e jogadores intermediários que queiram aprender o Gambito da Rainha ou melhorar percepção estratégica.  
 - Funciona **diretamente no terminal**, sem interface gráfica.  
 
+---
+
+## About the Author
+
+**Pedro Coutinho Varanda**
+
+-  **#1 Brazil** - OBA 2025, Perfect Score
+-  **#2 Brazil** - OBA 2023  
+-  **#3 Brazil** - OBA 2024
+-  **3× Selected** - International Olympiad on Astronomy and Astrophysics (IOAA)
+-  **4× Gold** - Canguru Mathematics Competition (2022-2025)
+
+ML/AI | Rio de Janeiro, Brazil 
+
+[GitHub](https://github.com/pedrocvaranda) • [Email](mailto:pedrocvaranda@example.com)
 ---
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
