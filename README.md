@@ -121,7 +121,7 @@ Tabuleiro após seu lance:
 
 ML/AI | Rio de Janeiro, Brazil 
 
-[GitHub](https://github.com/pedrocvaranda) • [Email](mailto:pedrocvaranda@example.com)
+[GitHub](https://github.com/pedrocvaranda) • [Email](mailto:pedrocvaranda@gmail.com)
 ---
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
