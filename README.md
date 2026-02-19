@@ -113,6 +113,7 @@ Tabuleiro após seu lance:
 
 **Pedro Coutinho Varanda**
 
+-  **Published Research: Varandian Optics (DOI: 10.5281/zenodo.18529071)**
 -  **#1 Brazil** - OBA 2025, Perfect Score
 -  **#2 Brazil** - OBA 2023  
 -  **#3 Brazil** - OBA 2024
@@ -122,7 +123,10 @@ Tabuleiro após seu lance:
 ML/AI | Rio de Janeiro, Brazil 
 
 [GitHub](https://github.com/pedrocvaranda) • [Email](mailto:pedrocvaranda@gmail.com)
+
 ---
+
+
 ![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
