@@ -1,132 +1,163 @@
-# Treinador de Xadrez – Gambito da Rainha
+# ♟️ Chess Trainer — Queen's Gambit
 
-## Descrição do Projeto
-
-Este projeto é um **treinador de xadrez em Python**, focado no **Gambito da Rainha**, desenvolvido para aprendizado e prática de abertura clássica de forma **interativa e didática**.
-
-O projeto oferece dois modos de jogo:
-
-1. **Modo Treinador (Gambito da Rainha)**  
-   - Ensina o Gambito da Rainha passo a passo.  
-   - Fornece explicações sobre os princípios de cada lance.  
-
-2. **Modo Livre Inteligente**  
-   - Permite jogar qualquer abertura.  
-   - Avalia seus lances e aponta **fraquezas estratégicas** ou peças mal posicionadas.  
-   - Dá dicas detalhadas apenas quando o usuário solicita (`hint`).  
-
-O projeto é **100% terminal**, simples de usar e não requer conhecimentos prévios em programação ou instalação de pacotes complexos.
+**Interactive terminal-based chess trainer focused on the Queen's Gambit, with strategic move analysis and smart hints**
 
 ---
 
-## Pré-requisitos
+## 🎯 What is This?
 
-- Python 3.7 ou superior  
-- Biblioteca **`python-chess`**
+This is an **interactive chess trainer written in Python**, designed for learning and practicing classic openings in a **didactic and engaging way**, entirely in the terminal.
 
-Para instalar a biblioteca necessária, execute:
+**Key Features:**
+
+* ♟️ **Trainer Mode** — teaches the Queen's Gambit step by step, explaining the strategic intent behind each move
+* 🧠 **Free Intelligent Mode** — play any opening freely; the system evaluates your moves and flags strategic weaknesses
+* 💡 **On-demand hints** — detailed hints available at any time via the `hint` command
+* 📋 **Board visualization** — updated board printed to the terminal after every move
+
+---
+
+## 🚀 Quick Start
+
+### Installation
 
 ```bash
+# Clone repository
+git clone https://github.com/pedrocvaranda/treinador-xadrez.git
+cd treinador-xadrez
+
+# Install dependency
 pip install chess
+
+# Run the trainer
+python treinador_xadrez.py
 ```
----
 
-## Como Baixar o Projeto
+### Your First Move
 
-1. Clone este repositório ou baixe o arquivo `.py` diretamente:
-```bash
-   git clone https://github.com/pedrocvaranda/treinador-xadrez.git
 ```
-2. Acesse a pasta do projeto:
-```bash
-   cd treinador-xadrez
-```
-3.	Certifique-se de que o Python está instalado:
-```bash
-  	python --version
-```
----
+Welcome to the Chess Trainer
+Trainer Mode: focus on the Queen's Gambit
 
-## Como Executar
-
-1. Execute o arquivo principal
-2. Você verá o menu inicial
-3. Escolha o modo desejado digitando `1` ou `2`.
-
-4. Durante o jogo, você pode:  
-   - Digitar lances em **SAN** (ex: `d4`, `c4`, `Nf3`, `O-O`).  
-   - Digitar `hint` para receber dicas explicativas.  
-   - Digitar `quit` para sair do jogo.  
-
-5. Após cada lance, o **tabuleiro será mostrado atualizado**, com explicações ou alertas estratégicos, dependendo do modo escolhido.
-
----
-
-## Exemplo de Uso
-Bem-vindo ao Treinador de Xadrez
-Modo Treinador: foco no Gambito da Rainha
-
-Como jogar:
-- Digite lances em SAN, ex: d4, c4, Nf3, O-O
-- Digite 'hint' para dicas explicativas
-- Digite 'quit' para sair
-
-Tabuleiro atual:
-
+Current board:
 r n b q k b n r
-
 p p p p p p p p
-
-0 0 0 0 0 0 0 0
-
-0 0 0 0 0 0 0 0
-
-0 0 0 P 0 0 0 0
-
-0 0 0 0 0 0 0 0
-
-P P P 0 P P P P
-
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+P P P P P P P P
 R N B Q K B N R
 
-
-Seu lance: d4
-
-Você jogou: d4
-
-Explicação: Você está controlando o centro do tabuleiro, ótimo para dominar o jogo.
-
-Tabuleiro após seu lance:
-...
+Your move: d4
+You played: d4
+Explanation: You are controlling the center of the board — a great foundation for dominating the game.
+```
 
 ---
 
-## Observações
+## 🎮 Game Modes
 
-- Este projeto é **didático**: não é um motor de xadrez profissional, mas sim uma ferramenta de aprendizado.  
-- Recomendado para iniciantes e jogadores intermediários que queiram aprender o Gambito da Rainha ou melhorar percepção estratégica.  
-- Funciona **diretamente no terminal**, sem interface gráfica.  
+### Mode 1 — Trainer (Queen's Gambit)
+
+The trainer guides you through the Queen's Gambit sequence, explaining the strategic idea behind every move. Perfect for beginners who want to learn opening structure and principles.
+
+### Mode 2 — Free Intelligent Mode
+
+Play any opening freely. The system evaluates your moves in real time, pointing out misplaced pieces or strategic weaknesses. Detailed hints only appear when you type `hint`.
+
+### Available Commands
+
+| Command | Action |
+|---------|--------|
+| `d4`, `c4`, `Nf3` | Play a move in SAN notation |
+| `hint` | Receive a strategic explanation |
+| `quit` | Exit the game |
 
 ---
 
-## About the Author
+## 📂 Project Structure
+
+```
+treinador-xadrez/
+├── README.md
+├── LICENSE
+└── treinador_xadrez.py    # Core logic: modes, board, move analysis
+```
+
+---
+
+## 🧪 Examples
+
+### Example 1: Queen's Gambit Sequence
+
+```
+Your move: d4   → Central control
+Your move: c4   → Queen's Gambit offered
+Your move: Nc3  → Natural development
+```
+
+### Example 2: Free Mode with Hint
+
+```
+Your move: e4
+> Move accepted. King's Pawn Opening.
+
+Your move: hint
+> Hint: Consider developing your knight to f3 to pressure the center
+  and prepare to castle. Pieces in the center control more squares.
+```
+
+---
+
+## 📋 Prerequisites
+
+* Python 3.7 or higher
+* `python-chess` library
+
+---
+
+## 👨‍🔬 About the Author
 
 **Pedro Coutinho Varanda**
 
--  **Published Research: Varandian Optics (DOI: 10.5281/zenodo.18529071)**
--  **#1 Brazil** - OBA 2025, Perfect Score
--  **#2 Brazil** - OBA 2023  
--  **#3 Brazil** - OBA 2024
--  **3× Selected** - International Olympiad on Astronomy and Astrophysics (IOAA)
--  **4× Gold** - Canguru Mathematics Competition (2022-2025)
+* 🥇 **#1 Brazil** — National Astronomy Olympiad (OBA 2025, Perfect Score)
+* 🥈 **#2 Brazil** — OBA 2023
+* 🥉 **#3 Brazil** — OBA 2024
+* 🎯 **3× Selected** — International Olympiad on Astronomy and Astrophysics (IOAA)
+* 🥇 **4× Gold** — Canguru Mathematics Competition (2022–2025)
 
-ML/AI | Rio de Janeiro, Brazil 
+ML/AI enthusiast | Rio de Janeiro, Brazil 🇧🇷
 
 [GitHub](https://github.com/pedrocvaranda) • [Email](mailto:pedrocvaranda@gmail.com)
 
 ---
 
+## 🤝 Contributing
 
-![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Status](https://img.shields.io/badge/status-active-success.svg)
+Contributions are welcome! Feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🔗 Related Projects
+
+* [Varandian Optics Simulator](https://github.com/pedrocvaranda/varadian-optics-simulator) — Light propagation simulator in curved spaces
+* [Cash Allocation Model](https://github.com/pedrocvaranda/modelo_alocacao_caixa) — ML-based financial optimizer
+
+---
+
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org)
+[![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/pedrocvaranda/treinador-xadrez)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
