@@ -157,7 +157,7 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 * [Cash Allocation Model](https://github.com/pedrocvaranda/modelo_alocacao_caixa) — ML-based financial optimizer
 
 ---
-
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18529071-blue?style=flat&logo=doi)](https://doi.org/10.5281/zenodo.19040991)
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/pedrocvaranda/treinador-xadrez)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
