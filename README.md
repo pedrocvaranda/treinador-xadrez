@@ -1,23 +1,23 @@
-# ♟️ Chess Trainer — Queen's Gambit
+# Chess Trainer — Queen's Gambit
 
 **Interactive terminal-based chess trainer focused on the Queen's Gambit, with strategic move analysis and smart hints**
 
 ---
 
-## 🎯 What is This?
+## What is This?
 
-This is an **interactive chess trainer written in Python**, designed for learning and practicing classic openings in a **didactic and engaging way**, entirely in the terminal.
+This is an **interactive chess trainer written in Python**, designed for learning and practicing classic openings in a didactic and engaging way, entirely in the terminal.
 
 **Key Features:**
 
-* ♟️ **Trainer Mode** — teaches the Queen's Gambit step by step, explaining the strategic intent behind each move
-* 🧠 **Free Intelligent Mode** — play any opening freely; the system evaluates your moves and flags strategic weaknesses
-* 💡 **On-demand hints** — detailed hints available at any time via the `hint` command
-* 📋 **Board visualization** — updated board printed to the terminal after every move
+- **Trainer Mode** — teaches the Queen's Gambit step by step, explaining the strategic intent behind each move
+- **Free Intelligent Mode** — play any opening freely; the system evaluates your moves and flags strategic weaknesses
+- **On-demand hints** — detailed hints available at any time via the `hint` command
+- **Board visualization** — updated board printed to the terminal after every move
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -35,7 +35,7 @@ python treinador_xadrez.py
 
 ### Your First Move
 
-```
+```text
 Welcome to the Chess Trainer
 Trainer Mode: focus on the Queen's Gambit
 
@@ -56,7 +56,7 @@ Explanation: You are controlling the center of the board — a great foundation 
 
 ---
 
-## 🎮 Game Modes
+## Game Modes
 
 ### Mode 1 — Trainer (Queen's Gambit)
 
@@ -76,9 +76,9 @@ Play any opening freely. The system evaluates your moves in real time, pointing 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-```
+```text
 treinador-xadrez/
 ├── README.md
 ├── LICENSE
@@ -87,11 +87,11 @@ treinador-xadrez/
 
 ---
 
-## 🧪 Examples
+## Examples
 
 ### Example 1: Queen's Gambit Sequence
 
-```
+```text
 Your move: d4   → Central control
 Your move: c4   → Queen's Gambit offered
 Your move: Nc3  → Natural development
@@ -99,7 +99,7 @@ Your move: Nc3  → Natural development
 
 ### Example 2: Free Mode with Hint
 
-```
+```text
 Your move: e4
 > Move accepted. King's Pawn Opening.
 
@@ -110,30 +110,30 @@ Your move: hint
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
-* Python 3.7 or higher
-* `python-chess` library
+- Python 3.7 or higher
+- `python-chess` library
 
 ---
 
-## 👨‍🔬 About the Author
+## About the Author
 
 **Pedro Coutinho Varanda**
 
-* 🥇 **#1 Brazil** — National Astronomy Olympiad (OBA 2025, Perfect Score)
-* 🥈 **#2 Brazil** — OBA 2023
-* 🥉 **#3 Brazil** — OBA 2024
-* 🎯 **3× Selected** — International Olympiad on Astronomy and Astrophysics (IOAA)
-* 🥇 **4× Gold** — Canguru Mathematics Competition (2022–2025)
+- **#1 Brazil** — National Astronomy Olympiad (OBA 2025, Perfect Score)
+- **#2 Brazil** — OBA 2023
+- **#3 Brazil** — OBA 2024
+- **3x Selected** — International Olympiad on Astronomy and Astrophysics (IOAA)
+- **4x Gold** — Canguru Mathematics Competition (2022–2025)
 
-ML/AI enthusiast | Rio de Janeiro, Brazil 🇧🇷
+ML/AI enthusiast | Rio de Janeiro, Brazil
 
 [GitHub](https://github.com/pedrocvaranda) • [ORCID](https://orcid.org/0009-0004-5199-1745) • [Email](mailto:pedrocvaranda@gmail.com)
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Feel free to submit a Pull Request.
 
@@ -145,19 +145,17 @@ Contributions are welcome! Feel free to submit a Pull Request.
 
 ---
 
-## 📝 License
+## Related Projects
+
+- [Varandian Optics Simulator](https://github.com/pedrocvaranda/varadian-optics-simulator) — Light propagation simulator in curved spaces
+- [Cash Allocation Model](https://github.com/pedrocvaranda/modelo_alocacao_caixa) — ML-based financial optimizer
+
+---
+
+## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🔗 Related Projects
-
-* [Varandian Optics Simulator](https://github.com/pedrocvaranda/varadian-optics-simulator) — Light propagation simulator in curved spaces
-* [Cash Allocation Model](https://github.com/pedrocvaranda/modelo_alocacao_caixa) — ML-based financial optimizer
-
----
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18529071-blue?style=flat&logo=doi)](https://doi.org/10.5281/zenodo.19040991)
-[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org)
-[![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/pedrocvaranda/treinador-xadrez)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org) [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Status](https://img.shields.io/badge/Status-Active-success.svg)](https://github.com/pedrocvaranda/treinador-xadrez)
